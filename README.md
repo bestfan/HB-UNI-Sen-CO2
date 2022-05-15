@@ -1,7 +1,18 @@
 # HB-UNI-Sen-CO2-STM32
 CO2 Sensor for Homematic with STM32
 
+Inspired by the excellent work of [MHSteve](https://github.com/HMSteve/HB-UNI-Sen-CO2/blob/main/README.md) I enhanced the solution by the following features:
+- Use of STM32 boards (Blue Pill or Maple Mini)
+- Compatibility with standard casing
+- Use of Winsen MH-Z19 CO2 Sensor
 
+Due to the missing battery support of the STM32 boards and the space restrictions I left out the rechargeable batteries which seems to be bearable for me, since a power supply is needed anyway.
+
+
+
+## Disclaimer
+
+The usage of the published software and information is at your own risk and without any warranty.
 
 ## Lizenz
 
