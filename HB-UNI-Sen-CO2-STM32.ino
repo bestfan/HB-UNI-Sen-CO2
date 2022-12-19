@@ -313,7 +313,7 @@ class WeatherChannel : public Channel<Hal, SensorList1, EmptyList, List4, PEERS_
     uint16_t            pressureAmb = 1013; //mean pressure at sea level in hPa
     uint16_t            pressureNN = 0; //dummy value to be returned if no sensor measurement
     uint16_t            co2 = 0;
-    uint16_t            temp10 = 0;
+    int16_t             temp10 = 0;
     uint8_t             humidity = 0;
     RgbLedType          trafficLight; 
     bool                trafficLightEnabled = true;
