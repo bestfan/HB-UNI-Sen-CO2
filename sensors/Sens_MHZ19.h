@@ -83,7 +83,8 @@ public:
 
     bool setForcedRecalibrationFactor(uint16_t concentration)
     {
-//      return(_mhz19.setForcedRecalibrationFactor(concentration));
+        //concentration not used for MH-Z19
+        _mhz19.calibrate();
         return 0;
     }
 
