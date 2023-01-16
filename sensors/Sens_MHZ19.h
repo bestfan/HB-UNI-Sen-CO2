@@ -85,7 +85,7 @@ public:
     {
         //concentration not used for MH-Z19
         _mhz19.calibrate();
-        return 0;
+        return 1;
     }
 
 
