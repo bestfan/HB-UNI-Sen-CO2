@@ -1,15 +1,15 @@
-# HB-UNI-Sen-CO2-STM32
+# HB-UNI-Sen-CO2
 
-### CO2 Sensor for Homematic with STM32
+### CO2 Sensor for Homematic with STM32 and RP2040 pico
 
 Inspired by the excellent work of [MHSteve](https://github.com/HMSteve/HB-UNI-Sen-CO2/blob/main/README.md) I enhanced his solution by the following features:
-- Use of STM32 boards (Blue Pill or Maple Mini)
+- Use of STM32 boards (Blue Pill or Maple Mini) and RP2040 pico board
 - Compatibility with standard sensor casing (86x86 mm)
 - Use of Winsen MH-Z19 CO2 Sensor instead of SCD30 as option
 - Use of touch pad as config button
 - Use of RGB LED for traffic light instead of red/green LED
 
-Due to the missing battery support of the STM32 boards and the space restrictions I left out the rechargeable batteries which seems to be bearable for me, since a power supply is needed anyway.
+Due to the missing battery support of the STM32 and RP2040 boards and the space restrictions I left out the rechargeable batteries which seems to be bearable for me, since a power supply is needed anyway.
 
 Here you can see some photos how the assembled boards look like
 
@@ -38,12 +38,14 @@ In comparison to the original work, where the following libraries have been requ
 - LowPower
 - SparkFun SCD30 Arduino Library
 - Adafruit BME280 Library
-- GxEPD
+- GxEPD (STM32)
+- GxEPD2 (RP2040)
 - Adafruit GFX
 
 some additional libraries have to be applied
 - MH-Z19
-- bluepill_ws2812
+- bluepill_ws2812 (STM32)
+- Adafruit NeoPixel (RP2040)
 
 If you decide to use a STM32 Blue Pill microcontroller, please, make sure that the STM32 bootloader is installed. It is possible to use the standard serial port to flash the software (or the bootloader), however the display won't work, because some of the connections are attached to debug pins.
 
