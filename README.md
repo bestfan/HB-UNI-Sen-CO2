@@ -1,9 +1,9 @@
 # HB-UNI-Sen-CO2
 
-### CO2 Sensor for Homematic with STM32 and RP2040 pico
+### CO2 Sensor for Homematic with STM32 or RP2040 pico
 
 Inspired by the excellent work of [MHSteve](https://github.com/HMSteve/HB-UNI-Sen-CO2/blob/main/README.md) I enhanced his solution by the following features:
-- Use of STM32 boards (Blue Pill or Maple Mini) and RP2040 pico board
+- Use of STM32 boards (Blue Pill or Maple Mini) or RP2040 pico board
 - Compatibility with standard sensor casing (86x86 mm)
 - Use of Winsen MH-Z19 CO2 Sensor instead of SCD30 as option
 - Use of touch pad as config button
