@@ -1,11 +1,16 @@
 
 // EPaper setup
-#include <GxEPD.h>
+/*#include <GxEPD.h>
 #include <GxGDEH0154D67/GxGDEH0154D67.h>
 
 #include <GxIO/GxIO_SPI/GxIO_SPI.h>
-#include <GxIO/GxIO.h>
+#include <GxIO/GxIO.h>*/
+#define USE_HSPI_FOR_EPD
+#define ENABLE_GxEPD2_GFX 0
 
+#include <GxEPD2.h>
+#include <GxEPD2_BW.h>
+//#include <GxGDEH0154D67/GxGDEH0154D67.h>
 #include <Fonts/FreeMonoBold9pt7b.h>
 #include <Fonts/FreeMonoBold12pt7b.h>
 #include <Fonts/FreeMonoBold18pt7b.h>
@@ -27,14 +32,23 @@
     #define EPD_CS_PIN   PB12
   #endif
 #else
-  #define EPD_RST_PIN  21       
-  #define EPD_BUSY_PIN 20   
-  #define EPD_DC_PIN   22
-  #define EPD_CS_PIN   23 
+  #if defined ARDUINO_ARCH_RP2040
+    #define EPD_RST_PIN  10       
+    #define EPD_BUSY_PIN  9   
+    #define EPD_DC_PIN   11
+    #define EPD_CS_PIN   13   
+  #else
+    #define EPD_RST_PIN   9       
+    #define EPD_BUSY_PIN 10   
+    #define EPD_DC_PIN   11
+    #define EPD_CS_PIN   13 
+  #endif
 #endif
 
-GxIO_Class io(SPI_2, EPD_CS_PIN, EPD_DC_PIN, EPD_RST_PIN);
-GxEPD_Class display(io, EPD_RST_PIN, EPD_BUSY_PIN);
+GxEPD2_BW<GxEPD2_154_D67, GxEPD2_154_D67::HEIGHT> display(GxEPD2_154_D67(/*CS=D8*/ EPD_CS_PIN, /*DC=D3*/ EPD_DC_PIN, /*RST=D4*/ EPD_RST_PIN, /*BUSY=D2*/ EPD_BUSY_PIN)); // GDEH0154D67
+
+//GxIO_Class io(SPI1, EPD_CS_PIN, EPD_DC_PIN, EPD_RST_PIN);
+//GxEPD_Class display(io, EPD_RST_PIN, EPD_BUSY_PIN);
 
 typedef struct {
   uint16_t co2 = 0;
@@ -46,7 +60,7 @@ typedef struct {
 DisplayDataType DisplayData;
 
 
-void MeasurementsDisplay()
+void MeasurementsDisplay(const void* parameters)
 // uint16_t co2, float temperature, uint8_t humidity
 {
   int16_t tbx, tby; 
@@ -155,7 +169,7 @@ void MeasurementsDisplay()
 }
 
 
-void EmptyBattDisplay()
+void EmptyBattDisplay(const void* parameters)
 {
   int16_t tbx, tby; 
   uint16_t tbw, tbh, x, y;
@@ -245,11 +259,11 @@ public:
       this->mustUpdateDisplay(false);
       display.init();
       if (this->showEmptyBattDisplay() == true ) {
-          display.drawPaged(EmptyBattDisplay);
+          display.drawPaged(EmptyBattDisplay,0);
           this->showEmptyBattDisplay(false);
       } 
       else {
-        display.drawPaged(MeasurementsDisplay);
+        display.drawPaged(MeasurementsDisplay,0);
       }
 //      display.update();
       delay(50);

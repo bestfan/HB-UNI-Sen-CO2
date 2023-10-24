@@ -7,15 +7,15 @@
 //- -----------------------------------------------------------------------------------------------------------------------
 // 2022-04-25 CO2 Sensor on STM32 and other features, bestfan (cc)
 
-//#define NDEBUG   // disable all serial debug messages  
+#define NDEBUG   // disable all serial debug messages  
 
 //#define EI_NOTEXTERNAL
 
-//#define SERIAL_OUTPUT  // data in JSONPATH format on serial line, use NDEBUG!
+#define SERIAL_OUTPUT  // data in JSONPATH format on serial line, use NDEBUG!
 #define RGBLED
 
-//#define useMHZ19  //use MHZ19 CO2 sensor
-#define useSCD30  //use SCD30 CO2 sensor
+#define useMHZ19  //use MHZ19 CO2 sensor
+//#define useSCD30  //use SCD30 CO2 sensor
 #define useBME280 //use pressure sensor for compensation, in case MH-Z19 use also temperature and humidity
 
 #define BAT_VOLT_LOW        22  // 2.2V for 2x Eneloop 
@@ -574,6 +574,8 @@ void setup () {
   #endif
   //init ePaper display
   //display.init(); //not done here because v2 of Waveshare display draws about continuous 3mA via Reset pin
+  display.init(115200, true, 10, false, SPI_2, SPISettings(4000000, MSBFIRST, SPI_MODE0));
+  
   #if defined NDEBUG && defined SERIAL_OUTPUT
     Serial.begin(57600);
   #else
@@ -607,7 +609,7 @@ void loop() {
         sdev.channel(0).stopMHZ19();           
       #endif
       //display.init();
-      //display.drawPaged(EmptyBattDisplay);
+      //display.drawPaged(EmptyBattDisplay,0);
       //wait a bit to let paged epd refresh finish
       //delay(5000);
 #ifndef ARDUINO_ARCH_STM32F1
