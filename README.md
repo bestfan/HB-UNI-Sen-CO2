@@ -46,6 +46,7 @@ some additional libraries have to be applied
 - bluepill_ws2812 (STM32)
 - Adafruit NeoPixel (RP2040)
 - GxEPD2 (STM32 and RP2040)
+- OneWire (for use DS18B20 on RP2040 only), use of main version necessary.
 
 If you decide to use a STM32 Blue Pill microcontroller, please, make sure that the STM32 bootloader is installed. It is possible to use the standard serial port to flash the software (or the bootloader), however the display won't work, because some of the connections are attached to debug pins.
 
