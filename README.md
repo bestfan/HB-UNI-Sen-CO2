@@ -38,14 +38,14 @@ In comparison to the original work, where the following libraries have been requ
 - LowPower
 - SparkFun SCD30 Arduino Library
 - Adafruit BME280 Library
-- GxEPD (STM32)
-- GxEPD2 (RP2040)
+- GxEPD (replaced by GxEPD2)
 - Adafruit GFX
 
 some additional libraries have to be applied
 - MH-Z19
 - bluepill_ws2812 (STM32)
 - Adafruit NeoPixel (RP2040)
+- GxEPD2 (STM32 and RP2040)
 
 If you decide to use a STM32 Blue Pill microcontroller, please, make sure that the STM32 bootloader is installed. It is possible to use the standard serial port to flash the software (or the bootloader), however the display won't work, because some of the connections are attached to debug pins.
 
