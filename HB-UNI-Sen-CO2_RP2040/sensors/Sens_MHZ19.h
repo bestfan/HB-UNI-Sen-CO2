@@ -50,8 +50,8 @@ class Sens_MHZ19 : public Sensor {
         _mhz19.verify();
         if (_mhz19.errorCode == RESULT_OK)
         {
-              _carbondioxide    = (uint16_t)(_mhz19.getCO2(true, true));
-              _temperature      = (int16_t)(_mhz19.getTemperature(true, false)); 
+              _carbondioxide    = (uint16_t)(_mhz19.getCO2(true));
+              _temperature      = (int16_t)(_mhz19.getTemperature(false)); 
 
               DPRINTLN("");
               delay(1000);
