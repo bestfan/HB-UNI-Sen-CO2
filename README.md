@@ -42,7 +42,7 @@ In comparison to the original work, where the following libraries have been requ
 - Adafruit GFX
 
 some additional libraries have to be applied
-- MH-Z19
+- MH-Z19, version 1.5.4 or newer
 - bluepill_ws2812 (STM32)
 - Adafruit NeoPixel (RP2040)
 - GxEPD2 (STM32 and RP2040)
